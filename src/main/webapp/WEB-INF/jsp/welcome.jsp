@@ -1,72 +1,118 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Login V20</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+	
+ 
+<!--  
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
+	
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+-->
+
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<link href="../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<script src="../webjars/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<script src="../webjars/jquery/3.0.0/js/jquery.min.js" ></script>
+
 </head>
 <body>
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-b-160 p-t-50">
+			<div class="container ">
+			
+			<div class = "navBar">
+ 	Welcome,  ${username}
+ 	<br>
+ 		<div class = "button">
+			<form action="login">
+				<button class = "button">Login</button>
+			</form>
+		</div>
+			
+		<div class ="button">
+			<form action="logout">
+				<button class = "button" >Logout</button>
+			</form>
+		</div>
+		
+		<script type="text/javascript">
+		var user = "<?php echo $username?>"; 
+		</script>
+			
+		<div class ="button">
+			<form action = "retrieveCart">
+				<button class = "button">Cart(${cartCount})</button>
+			</form>
+		</div>
+		
+		<div class ="button">
+			<form action = "accountDetails"  >
+			<input type='hidden' name='username' value='${username}'/> 
+				<button class = "button">Account</button>
+			</form>
+		</div>	
+		
+		</div>
+		<br>
+		<br>
+		<br>		
+			
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-43">
-						Account Login
+						<h1>Welcome to ${company.name}'s online ordering system</h1>
 					</span>
-					
-					<div class="wrap-input100 rs1 validate-input" data-validate = "Username is required">
-						<input class="input100" type="text" name="username">
-						<span class="label-input100">Username</span>
-					</div>
-					
-					
-					<div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass">
-						<span class="label-input100">Password</span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Sign in
-						</button>
-					</div>
-					
-					<div class="text-center w-full p-t-23">
-						<a href="#" class="txt1">
-							Forgot password?
-						</a>
-					</div>
+				
 				</form>
+				
+			<p class ="description">
+				<h2>${company.description}</h2>
+			
+			</p>
 			</div>
-		</div>
-	</div>
-	
-	
+			
+			<div class = "companyInfo">
+			</div>
+  
+ 
+  <div class = "categoriesList">
+  <h2>Categories</h2> 
+  <table class="table table-striped">
+   <thead>
+    <tr>
+     <th scope="row">ID</th>
+     <th scope="row">Name</th>
+     <th scope="row">Test Link</th>
 
-	
+    </tr>
+   </thead>
+   <tbody>
+    <c:forEach items="${categories}" var="category" >
+     <tr>
+      <td>${category.id }</td>
+      <td>${category.name }</td>
+      <td><a href="/category?categoryToSearch=${category.name}"">${category.name } </a></td>
+      
+      
+     </tr>
+    </c:forEach>
+   </tbody>
+  </table>
+  
+ </div>
 	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>

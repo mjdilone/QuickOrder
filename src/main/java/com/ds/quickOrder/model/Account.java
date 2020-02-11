@@ -8,6 +8,8 @@ public class Account {
 	private String account_name;
 	private String password;
 	
+	
+	
 
 	public int getId() {
 		return id;

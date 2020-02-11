@@ -7,6 +7,7 @@
 <title>The next Page</title>
 </head>
 <body>
+This is the next page
 ${messageToPass}
 </body>
 </html>

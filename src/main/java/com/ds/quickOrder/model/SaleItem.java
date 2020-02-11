@@ -1,12 +1,14 @@
 package com.ds.quickOrder.model;
 
 public class SaleItem {
+
 	private int id;
 	private String name;
 	private double pricePerUnit;
 	private double srp;
 	private String imageSource;
 	private String itemDescription;
+	private int category;
 	
 	
 
@@ -45,5 +47,18 @@ public class SaleItem {
 	}
 	public void setItemDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
+	}
+
+	public int getCategory() {
+		return category;
+	}
+	public void setCategory(int category) {
+		this.category = category;
+	}
+	@Override
+	public String toString() {
+		return "SaleItem [id=" + id + ", name=" + name + ", pricePerUnit=" + pricePerUnit + ", srp=" + srp
+				+ ", imageSource=" + imageSource + ", itemDescription=" + itemDescription + ", category=" + category
+				+ "]";
 	}
 }

@@ -12,7 +12,7 @@
 	<artifactId>WebApplicationSpringBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>QuickOrder</name>
-	<description>System for mkaing Quick Inventory Orders</description>
+	<description></description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -79,12 +79,54 @@
 
 
 
-<!-- newly added -->
+
 <dependency>
     <groupId>commons-io</groupId>
     <artifactId>commons-io</artifactId>
     <version>2.5</version>
 </dependency>
+
+<!-- Hibernate Dependancy -->
+ <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>5.2.16.Final</version>
+    </dependency>
+
+
+
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-all</artifactId>
+    <version>1.8.4</version>
+    <scope>test</scope>
+</dependency>
+
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.10</version>
+    <scope>provided</scope>
+</dependency>
+
+
+<!-- newly added -->
+<!-- 
+
+ -->
+	<dependency>
+    	<groupId>io.springfox</groupId>
+    	<artifactId>springfox-swagger2</artifactId>
+    	<version>2.9.2</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>io.springfox</groupId>
+    	<artifactId>springfox-swagger-ui</artifactId>
+    	<version>2.9.2</version>
+	</dependency>
+
+
 
 	</dependencies>
 

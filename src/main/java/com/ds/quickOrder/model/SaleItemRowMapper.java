@@ -17,6 +17,7 @@ public class SaleItemRowMapper implements RowMapper<SaleItem> {
 	 item.setSrp(resultSet.getDouble("srp"));
 	 item.setImageSource(resultSet.getString("image_path"));
 	 item.setItemDescription(resultSet.getString("description"));
+	 item.setCategory(resultSet.getInt("category"));
 	 
 	 return item;
 	

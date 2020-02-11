@@ -1,0 +1,8 @@
+-clean up guest cookie creation into another class
+
+-searchSaleItemByName in SaleItemDaoImpl needs to be refactored into a cleaner method, all that String creation is costly
+-make aggregateCart more efficient
+-aggregation has to group Past Orders by the date they were added so that they are grouped as "orders" right now it's just aggregating everything in the SQL database 
+-basic code engineering like for examples protecting yur code with test cases
+-DeleteItem from cart function
+-basic warning for cookies being used

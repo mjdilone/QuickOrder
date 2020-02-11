@@ -25,9 +25,11 @@ public class LoginDaoImpl implements LoginDao {
 		System.out.println("query in account retrieval is " + query);
 		RowMapper<Account> rowMapper = new AccountRowMapper();
 		Account account = new Account();
-		account = jdbcTemplate.queryForObject(query, rowMapper);
 
 		
+		account = jdbcTemplate.queryForObject(query, rowMapper);
+
+
 		return account;
 	}
 

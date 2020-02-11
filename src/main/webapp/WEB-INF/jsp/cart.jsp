@@ -8,12 +8,51 @@
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
  <title>Customer Cart</title>
+ <link rel="stylesheet" href="css/styles.css">
  <link href="../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
  <script src="../webjars/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
  <script src="../webjars/jquery/3.0.0/js/jquery.min.js" ></script>
 </head>
 <body>
  <div class="container">
+ 
+ 	<div class = "navBar">
+ 	Welcome,  ${username}
+ 	<br>
+ 		<div class = "button">
+			<form action="login">
+				<button class = "button">Login</button>
+			</form>
+		</div>
+			
+		<div class ="button">
+			<form action="logout">
+				<button class = "button" >Logout</button>
+			</form>
+		</div>
+		
+		<div class ="button">
+			<form action = "retrieveCart">
+				<button class = "button">Cart(${cartCount})</button>
+			</form>
+		</div>
+		
+		<div class ="button">
+			<form action = "accountDetails"  >
+			<input type='hidden' name='username' value='${username}'/> 
+				<button class = "button">Account</button>
+			</form>
+		</div>	
+		
+		</div>
+		
+		
+	<br>
+	<br>
+ 
+ 
+ 
+ 
   <h2>Cart</h2>
   <table class="table table-striped">
    <thead>
@@ -36,7 +75,9 @@
     </c:forEach>
    </tbody>
   </table>
-  <button>Keep Shopping</button> <button>Checkout</button> 
+ 	<form action="/list"><input type ="submit" value ="Keep Shopping"></form>
+ 	<form action="/checkout"><input type = "hidden" name = "id" value =${id }><input type ="submit" value ="Checkout"></form>
+ 	
  </div>
 
 </body>

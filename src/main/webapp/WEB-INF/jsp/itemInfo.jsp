@@ -5,15 +5,57 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Item Information</title>
+<link rel="stylesheet" href="css/styles.css">
+<link href="../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+ <script src="../webjars/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+ <script src="../webjars/jquery/3.0.0/js/jquery.min.js" ></script>
 </head>
 <body>
-this is the item information page
-<br>
+<div class = "container">
+<div class = "navBar">
+ 	Welcome,  ${username}
+ 	<br>
+ 		<div class = "button">
+			<form action="login">
+				<button class = "button">Login</button>
+			</form>
+		</div>
+			
+		<div class ="button">
+			<form action="logout">
+				<button class = "button" >Logout</button>
+			</form>
+		</div>
+		
+		<script type="text/javascript">
+		var user = "<?php echo $username?>"; 
+		</script>
+			
+		<div class ="button">
+			<form action = "retrieveCart">
+				<button class = "button">Cart(${cartCount})</button>
+			</form>
+		</div>
+		
+		<div class ="button">
+			<form action = "accountDetails"  >
+			<input type='hidden' name='username' value='${username}'/> 
+				<button class = "button">Account</button>
+			</form>
+		</div>	
+		
+		</div>
+		
+		
+	<br>
+	<br>
+	<br>
 <form action="/addToCart">
+ 	  <img src= ${saleItem.imageSource} height = "300" width = "300">
+ 	  <br>
       ${saleItem.id } <input type='hidden' name='id' value='${saleItem.id}'/> 
       <br>
-      <img src= ${saleItem.imageSource} height = "300" width = "300">
-      <br>
+
       ${saleItem.name }
       <br>
       ${saleItem.pricePerUnit }
@@ -24,8 +66,12 @@ this is the item information page
       <br>
       ${saleItem.itemDescription}
       <br>
+      <br>
       Amount: <input type = "number" name = "quantity" value ="quantity">
+      <br>
+      <br>
       <button type = "submit" >Add to Cart</button>
       </form>
 </body>
+</div>
 </html>

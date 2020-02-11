@@ -93,6 +93,12 @@
         <version>5.2.16.Final</version>
     </dependency>
 
+<!-- Mail Dependancy -->
+<dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>mail</artifactId>
+    <version>1.5.0-b01</version>
+</dependency>
 
 
 <dependency>

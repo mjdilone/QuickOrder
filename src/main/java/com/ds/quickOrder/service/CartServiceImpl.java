@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.ds.quickOrder.controller.CartController;
 import com.ds.quickOrder.dao.CartDaoImpl;
 import com.ds.quickOrder.model.CartItem;
-import com.sun.tools.sjavac.Log;
 
 @Service
 public class CartServiceImpl implements CartService{

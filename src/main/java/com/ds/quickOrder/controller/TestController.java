@@ -29,7 +29,7 @@ public class TestController {
 	AccountRepo repo;
 	
 	//For testing
-		@RequestMapping(value = {"/","test"},method=RequestMethod.GET)
+		@RequestMapping(value = {"/test"},method=RequestMethod.GET)
 		public ModelAndView testing() {
 			try {
 				String message = "this message is being sent from within the test method";

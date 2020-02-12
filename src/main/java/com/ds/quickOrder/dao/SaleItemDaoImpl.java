@@ -22,6 +22,7 @@ import com.ds.quickOrder.service.HelperServiceImpl;
 @Transactional
 @Repository
 public class SaleItemDaoImpl implements SaleItemDao{
+	@Autowired
 	private static Logger log = LoggerFactory.getLogger(CartController.class);
 	
 	@Autowired

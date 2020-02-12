@@ -32,7 +32,7 @@ public class LoginController {
 	
 	ModelAndView model = new ModelAndView();
 	
-	@RequestMapping(value = {"/","login"},method=RequestMethod.GET)
+	@RequestMapping(value = {"/login"},method=RequestMethod.GET)
 	public ModelAndView login(
 	@CookieValue(value = "username",defaultValue = "emptyCookieUsername") String cookieUsername,
 	@CookieValue(value = "password",defaultValue = "emptyCookiePassword") String cookiePassword,
@@ -52,7 +52,7 @@ public class LoginController {
 		return model;
 	}
 	
-	@RequestMapping(value = {"/","login"},method=RequestMethod.POST)
+	@RequestMapping(value = {"/login"},method=RequestMethod.POST)
 	public ModelAndView loginAuth(
 	@RequestParam String username,
 	@RequestParam String password, 

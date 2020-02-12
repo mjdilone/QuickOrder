@@ -30,7 +30,7 @@ public class SaleItemController {
 	
 
 
-	@RequestMapping(value = {"/", "list"}, method=RequestMethod.GET)
+	@RequestMapping(value = {"/list"}, method=RequestMethod.GET)
 	public ModelAndView getAllSaleItems(
 			@CookieValue(value = "username",defaultValue = "emptyCookieUsername") String cookieUsername,
 			@CookieValue(value = "userId",defaultValue = "emptyCookieUserId") String cookieUserId, 
@@ -59,7 +59,7 @@ public class SaleItemController {
 	
 	
 	//For testing correct values being given to DB
-	@RequestMapping(value = {"/","next"},method=RequestMethod.GET)
+	@RequestMapping(value = {"/next"},method=RequestMethod.GET)
 	public ModelAndView testingNext() {
 		try {
 			String message = "this message is being sent from within the next method";
@@ -74,7 +74,7 @@ public class SaleItemController {
 	}
 	
 	
-	@RequestMapping(value = {"/","itemInfo"},method=RequestMethod.GET)
+	@RequestMapping(value = {"/itemInfo"},method=RequestMethod.GET)
 	public ModelAndView getItemInfo(@RequestParam int id) {
 		try {
 			SaleItem item = saleItemService.findSaleItemById(id); 
@@ -88,7 +88,7 @@ public class SaleItemController {
 		
 	}
 	
-	@RequestMapping(value = {"/","searchSaleItem"},method=RequestMethod.GET)
+	@RequestMapping(value = {"/searchSaleItem"},method=RequestMethod.GET)
 	public ModelAndView searchSaleItem(@RequestParam String name) {
 		try {
 			List<SaleItem> allItems = saleItemService.searchSaleItemByName(name);
@@ -101,7 +101,7 @@ public class SaleItemController {
 		return model;
 	}
 	
-	@RequestMapping(value = {"/","searchSaleItemCategory"},method=RequestMethod.GET)
+	@RequestMapping(value = {"/searchSaleItemCategory"},method=RequestMethod.GET)
 	public ModelAndView searchSaleItemCategory(@RequestParam String name) {
 		
 		try {

@@ -24,7 +24,7 @@ public class LogoutController {
 
 	ModelAndView model = new ModelAndView();
 	
-	@RequestMapping(value = {"/","logout"},method=RequestMethod.GET)
+	@RequestMapping(value = {"/logout"},method=RequestMethod.GET)
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, 
 	@CookieValue(value = "username",defaultValue = "emptyCookieUsername") String cookieUsername,
 	@CookieValue(value = "password",defaultValue = "emptyCookiePassword") String cookiePassword,

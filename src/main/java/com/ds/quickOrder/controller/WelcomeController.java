@@ -58,7 +58,7 @@ public class WelcomeController {
 			return model;
 		}
 		
-		@RequestMapping(value = {"/","category"},method=RequestMethod.GET)
+		@RequestMapping(value = {"/category"},method=RequestMethod.GET)
 		public ModelAndView category(@RequestParam String categoryToSearch) {
 			try {
 				Category category = welcomeService.retrieveCategory(categoryToSearch);

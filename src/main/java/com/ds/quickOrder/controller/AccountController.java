@@ -33,7 +33,7 @@ public class AccountController {
 	
 	ModelAndView model = new ModelAndView();
 	
-	@RequestMapping(value = {"/","accountDetails"},method=RequestMethod.GET)
+	@RequestMapping(value = {"/accountDetails"},method=RequestMethod.GET)
 	public ModelAndView login(
 	@RequestParam String username, HttpServletResponse response,
 	@CookieValue(value = "cartCountCookie",defaultValue = "emptyCookieCartCount") String cartCountCookieString,
@@ -53,7 +53,7 @@ public class AccountController {
 		return model;
 	}	
 	
-	@RequestMapping(value = {"/","pastOrders"},method=RequestMethod.GET)
+	@RequestMapping(value = {"/pastOrders"},method=RequestMethod.GET)
 	public ModelAndView pastOrders(
 	@RequestParam int userId,
 	@CookieValue(value = "username",defaultValue = "emptyCookieUsername") String cookieUsername,

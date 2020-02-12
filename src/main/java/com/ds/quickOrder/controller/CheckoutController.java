@@ -24,7 +24,7 @@ public class CheckoutController {
 	
 	ModelAndView model = new ModelAndView();
 	
-	@RequestMapping(value = {"/","checkout"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/checkout"}, method = RequestMethod.GET)
 	public ModelAndView checkout(@RequestParam int id) {
 		try {
 			log.info("Method Entry " + new Object(){}.getClass().getEnclosingMethod().getName());

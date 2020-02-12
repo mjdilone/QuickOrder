@@ -35,7 +35,7 @@ public class CartController {
 
 	ModelAndView model = new ModelAndView();
 	
-	@RequestMapping(value = {"/","addToCart"},method=RequestMethod.GET)
+	@RequestMapping(value = {"/addToCart"},method=RequestMethod.GET)
 	public ModelAndView addToCart(
 			@RequestParam int id,
 			@RequestParam int quantity,
@@ -93,7 +93,7 @@ public class CartController {
 		return model;
 	}
 	
-	@RequestMapping (value = {"/","retrieveCart"},method=RequestMethod.GET)
+	@RequestMapping (value = {"/retrieveCart"},method=RequestMethod.GET)
 	public ModelAndView retreiveCart(
 	@CookieValue(value = "username",defaultValue = "emptyCookieUsername") String cookieUsername,
 	@CookieValue(value = "password",defaultValue = "emptyCookiePassword") String cookiePassword,

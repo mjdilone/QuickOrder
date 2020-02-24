@@ -50,12 +50,9 @@ body{
 	cursor: pointer;
 	border-radius: 50px;
 	display: inline-block;
-	
-	
-
-	
 }
-.loginForm{
+
+.loginForm {
 	color:cyan;
 }
 
@@ -68,6 +65,13 @@ body{
 	color:cyan;
 	font-size: 32px;
 }
+
+
+.errorMessage {
+	font-size: 45px;
+}
+
+
 
 input{
 	

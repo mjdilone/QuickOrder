@@ -7,7 +7,7 @@
 <title>Test Page</title>
 </head>
 <body>
-This is a test page within your JSP folder
+This is a test page within  JSP folder
  
  <br>
 the message you passed is  -----> ${messageToPass}
@@ -15,7 +15,7 @@ the message you passed is  -----> ${messageToPass}
  <button onclick = "/SaleItem.next">Next Page</button>
  
  <form action="/next">
- 	<button type="submit" class="btn btn-primary">Save</button>
+ 	<button type="submit" class="btn btn-primary">Next</button>
  
  </form>
  <br>

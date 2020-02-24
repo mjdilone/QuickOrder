@@ -22,9 +22,11 @@ public class AccountDaoImpl implements AccountDao{
 	AccountRowMapper accountRowMapper = new AccountRowMapper();
 	PastOrderItemRowMapper pastOrderItemMapper = new PastOrderItemRowMapper();
 	
+	//no defense against an empty account, in other words a guest
 	@Override
 	public Account retrieveAccount(String username) {
-		if(username.isEmpty()) {
+		System.out.println("Username: " + username);
+		if(username.isEmpty() || username.equalsIgnoreCase("guest")) {
 			return new Account();
 		}else {
 			String query = "select * from customer_accounts where account_name ='" + username + "'";

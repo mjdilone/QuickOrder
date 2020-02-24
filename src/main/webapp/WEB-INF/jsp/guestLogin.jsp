@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>   
-<!DOCTYPE html>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="ISO-8859-1">
-
-<title>Past Orders</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+ <title>Sale Items List</title>
  <link rel="stylesheet" href="css/styles.css">
  <link href="../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
  <script src="../webjars/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
@@ -15,7 +14,9 @@
 </head>
 <body>
 
-<div class = "navBar">
+ <div class="container">
+ 
+ <%-- 	<div class = "navBar">
  	Welcome,  ${username}
  	<br>
  		<div class = "button">
@@ -47,33 +48,19 @@
 			</form>
 		</div>	
 		
-		</div>
+		</div> --%>
 		
-		
-		
-<div class = "container">
-<table class="table table-striped">
-   <thead>
-    <tr>
-     <th scope="row">Name</th>
-     <th scope = "row">Quantity</th>
-     <th scope = "row">Image</th>
-    </tr>
-   </thead>
-   <tbody>
-    <c:forEach items="${pastOrders}" var="pastOrderItem" >
-     <tr>
-      <td>${pastOrderItem.name }</td>
-      <td>${pastOrderItem.quantity }</td>
-     </tr>
-    </c:forEach>
-   </tbody>
-  </table>
+	<div class = "errorMessage">
+		<p>
+			You are signed in as a guest
+		</p>
+	</div>
+ 	<div class = "loginForm">
+ 		<form action = "login">
+ 			<input type = "submit" value = "Click here to login">
+ 		</form>
+ 	</div>
+
 </div>
-  
-
-
-
-
 </body>
 </html>

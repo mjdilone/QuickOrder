@@ -44,9 +44,15 @@ public class AccountController {
 			Account account = accountService.retrieveAccount(username);
 			
 			log.info("Account name is " + account.getAccount_name());
-			helper.prepModel(model, cartCountCookieString, cookieUsername,cookieUserId);
-			model.addObject("account",account);
-			model.setViewName("account");
+			
+			if(account.getAccount_name().equalsIgnoreCase("Guest")) {
+				model.setViewName("guestLogin");
+			}else {
+				helper.prepModel(model, cartCountCookieString, cookieUsername,cookieUserId);
+				model.addObject("account",account);
+				model.setViewName("account");
+			}
+			
 		} catch (Exception e) {
 			log.info("Could not retrieve account Exception:" + e.toString());
 		}

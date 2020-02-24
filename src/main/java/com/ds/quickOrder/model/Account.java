@@ -9,8 +9,24 @@ public class Account {
 	private String password;
 	
 	
-	
+	public Account() {
+		
+	}
 
+	public Account(String account_name) {
+		super();
+		this.account_name = account_name;
+	}
+	public Account(int id, String fname, String lname, String email, String account_name, String password) {
+		super();
+		this.id = id;
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+		this.account_name = account_name;
+		this.password = password;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -47,5 +63,11 @@ public class Account {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", account_name="
+				+ account_name + ", password=" + password + "]";
 	}
 }

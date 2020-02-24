@@ -17,6 +17,9 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account retrieveAccount(String username) {
+		if(username.equalsIgnoreCase("Guest") || username.isBlank()) {
+			return new Account("Guest");
+		}
 		Account accountToRetrieve = new Account();
 		try {
 			 accountToRetrieve = accountDao.retrieveAccount(username);

@@ -27,9 +27,9 @@
 			</form>
 		</div>
 		
-		<script type="text/javascript">
+<!-- 		<script type="text/javascript">
 		var user = "<?php echo $username?>"; 
-		</script>
+		</script> -->
 			
 		<div class ="button">
 			<form action = "retrieveCart">
@@ -44,18 +44,25 @@
 			</form>
 		</div>	
 		
-		</div>
+	 </div>
+	
+	<br>
+	<br>
+	<br>
+	<form action="/searchSaleItem">
+			Search: <input type = "text" name="name">
+		</form>
 		
 		
 	<br>
 	<br>
 	<br>
-<form action="/addToCart">
+	<div class = "itemInfo">
+	<form action="/addToCart">
  	  <img src= ${saleItem.imageSource} height = "300" width = "300">
  	  <br>
-      ${saleItem.id } <input type='hidden' name='id' value='${saleItem.id}'/> 
+      <input type='hidden' name='id' value='${saleItem.id}'/> 
       <br>
-
       ${saleItem.name }
       <br>
       ${saleItem.pricePerUnit }
@@ -70,8 +77,9 @@
       Amount: <input type = "number" name = "quantity" value ="quantity">
       <br>
       <br>
-      <button type = "submit" >Add to Cart</button>
+      <input type="submit" value = "Add to Cart">
       </form>
-</body>
+	</div>
 </div>
+</body>
 </html>

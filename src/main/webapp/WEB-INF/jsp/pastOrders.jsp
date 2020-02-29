@@ -15,6 +15,8 @@
 </head>
 <body>
 
+
+<div class = "container">
 <div class = "navBar">
  	Welcome,  ${username}
  	<br>
@@ -49,6 +51,13 @@
 		
 		</div>
 		
+	<br>
+	<br>
+	<br>
+	<form action="/searchSaleItem">
+			Search: <input type = "text" name="name">
+		</form>
+		
 		
 		
 <div class = "container">
@@ -71,7 +80,7 @@
   </table>
 </div>
   
-
+</div>
 
 
 

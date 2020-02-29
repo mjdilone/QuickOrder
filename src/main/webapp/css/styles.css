@@ -27,8 +27,13 @@ body{
     padding-top: 4%;
     padding-bottom:4%;
     text-align:center;
-    color: cyan;
+    color: cyan; 
 }
+
+.itemInfo{
+	font-size: 18px;
+}
+
 
 .navBar{
 	text-align:center; 
@@ -50,16 +55,31 @@ body{
 	cursor: pointer;
 	border-radius: 50px;
 	display: inline-block;
+	
 }
 
 .loginForm {
 	color:cyan;
 }
 
-.categoriesList{
+.categoriesList {
 	color:cyan;
+	text-align: center;
+	font-size: 30px;
+	padding-left: 30%;
+	padding-right: 30%;
 }
 
+.categoriesList td:hover{
+    background-color: #e0e0e0;
+    color: white;
+}
+
+
+.searchBarList a{
+	
+	color:cyan;
+}
 
 .description{
 	color:cyan;
@@ -68,9 +88,9 @@ body{
 
 
 .errorMessage {
-	font-size: 45px;
+	font-size: 30px;
+	
 }
-
 
 
 input{
@@ -152,6 +172,8 @@ ul.topnav li.dropdownIcon{
     display:none;
 }
 
+
+
 /***************************##########Custom Styles*/
 #section-1-gradient{
     background: purple;
@@ -163,8 +185,7 @@ ul.topnav li.dropdownIcon{
 }
 
 .leftSide-col{
-    margin-left: 30%;
-    
+    margin-left: 30%; 
 }
 
 h1.large{
@@ -175,8 +196,7 @@ h1.large{
 }
 
 form h2{
-    color:white;
-    
+    color:white; 
 }
 
 input[type="text"]{
@@ -234,6 +254,3 @@ input[type="password"]{
         
     }
 }
-
-
-/*Cookie Consent End*/

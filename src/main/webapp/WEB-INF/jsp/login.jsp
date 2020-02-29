@@ -7,15 +7,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css">
+<link href="../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
  <script src="../webjars/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
  <script src="../webjars/jquery/3.0.0/js/jquery.min.js" ></script>
 </head>
 <body>
-
-
-
 
 <div class ="container" >
 
@@ -53,18 +50,14 @@
 		
 		</div>
 		
-		
 		<br>
-		<br>
-		<br>
-		
-		
+	<br>
+	<br>
+	<form action="/searchSaleItem">
+			Search: <input type = "text" name="name">
+		</form>
+
 	<h1 class ="large">Welcome!</h1>
-	
-
-	
-
-
 
 	<div class = "loginForm">
 	<form action="/login" method = "post">

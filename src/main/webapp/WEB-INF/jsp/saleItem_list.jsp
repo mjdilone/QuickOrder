@@ -31,9 +31,9 @@
 			</form>
 		</div>
 		
-		<script type="text/javascript">
+<!-- 		<script type="text/javascript">
 		var user = "<?php echo $username?>"; 
-		</script>
+		</script> -->
 			
 		<div class ="button">
 			<form action = "retrieveCart">
@@ -58,31 +58,31 @@
 		<form action="/searchSaleItem">
 			Search: <input type = "text" name="name">
 		</form>
-	</div>
+	
 
   <table class="table table-striped">
    <thead>
     <tr>
-     <th scope="row">ID</th>
-     <th scope = "row">Picture</th>
+	 <th scope = "row">Picture</th>
      <th scope="row">Name</th>
      <th scope="row">PPU</th>
      <th scope="row">SRP</th>
-
     </tr>
    </thead>
    <tbody>
     <c:forEach items="${saleItem_list }" var="saleItem" >
      <tr>
-      <td>${saleItem.id }</td>
       <td><a href="/itemInfo?id=${saleItem.id}""><img src= ${saleItem.imageSource} height = "50" width = "50"></td>
-      <td>${saleItem.name }</td>
+      <td><a href="/itemInfo?id=${saleItem.id}"">${saleItem.name }</td>
       <td>${saleItem.pricePerUnit }</td>
       <td>${saleItem.srp }</td>
      </tr>
     </c:forEach>
    </tbody>
   </table>
+  
+  </div>
+  
   </div>
 </body>
 </html>

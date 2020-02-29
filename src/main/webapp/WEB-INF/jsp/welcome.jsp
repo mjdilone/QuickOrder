@@ -35,9 +35,9 @@
 <link rel="stylesheet" type="text/css" href="//wpcc.io/lib/1.0.2/cookieconsent.min.css"/><script src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script><script>window.addEventListener("load", function(){window.wpcc.init({"border":"thin","corners":"small","colors":{"popup":{"background":"#f6f6f6","text":"#000000","border":"#555555"},"button":{"background":"#555555","text":"#ffffff"}},"position":"bottom"})});</script>
 </head>
 <body>
-			<div class="container ">
+<div class="container ">
 			
-			<div class = "navBar">
+	<div class = "navBar">
  	Welcome,  ${username}
  	<br>
  		<div class = "button">
@@ -68,8 +68,15 @@
 				<button class = "button">Account</button>
 			</form>
 		</div>	
-		
 		</div>
+		
+	<br>
+	<br>
+	<br>
+	<form action="/searchSaleItem">
+			Search: <input type = "text" name="name">
+		</form>
+		
 		<br>
 		<br>
 		<br>		
@@ -83,47 +90,32 @@
 				
 			<p class ="description">
 				<h2>${company.description}</h2>
-			
 			</p>
-			
-			
-			</div>
-			
-			<div class = "companyInfo">
-			</div>
-  
- 
+
+	<br>
+	<br>
+	
   <div class = "categoriesList">
-  <h2>Categories</h2> 
+  <h2>Item Categories</h2> 
   <table class="table table-striped">
    <thead>
     <tr>
-     <th scope="row">ID</th>
-     <th scope="row">Name</th>
-     <th scope="row">Test Link</th>
 
     </tr>
    </thead>
    <tbody>
     <c:forEach items="${categories}" var="category" >
      <tr>
-      <td>${category.id }</td>
-      <td>${category.name }</td>
       <td><a href="/category?categoryToSearch=${category.name}"">${category.name } </a></td>
-      
-      
      </tr>
     </c:forEach>
    </tbody>
   </table>
-  
+ </div>			
 
-  
- </div>
- 
- <br>
- 
- 
+
+</div>
+			
 
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -140,7 +132,7 @@
 <!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>

@@ -47,10 +47,14 @@
 		</div>	
 		
 		</div>
-		
-		
+
+	
 	<br>
-	<br> 
+	<br>
+	<br>
+	<form action="/searchSaleItem">
+			Search: <input type = "text" name="name">
+		</form>
 
 		 <h2>Account Info</h2> 
   <table class="table table-striped">

@@ -47,10 +47,14 @@
 		</div>
 		
 		
+	
+ 
+ 	<br>
 	<br>
 	<br>
- 
- 
+	<form action="/searchSaleItem">
+			Search: <input type = "text" name="name">
+		</form>
  
  
   <h2>Cart</h2>

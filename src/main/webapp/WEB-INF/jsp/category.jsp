@@ -49,6 +49,7 @@
 	
 	
 	
+	
   <h2>Items List </h2> 
   
 
@@ -62,8 +63,8 @@
   <table class="table table-striped">
    <thead>
     <tr>
-     <th scope="row">ID</th>
-     <th scope = "row">Picture</th>
+<!--      <th scope="row">ID</th>--> 
+	 <th scope = "row">Picture</th>
      <th scope="row">Name</th>
      <th scope="row">PPU</th>
      <th scope="row">SRP</th>
@@ -73,8 +74,8 @@
    <tbody>
     <c:forEach items="${categoryItems }" var="saleItem" >
      <tr>
-      <td>${saleItem.id }</td>
-      <td><a href="/itemInfo?id=${saleItem.id}""><img src= ${saleItem.imageSource} height = "50" width = "50"></td>
+<%--       <td>${saleItem.id }</td>--%> 
+	  <td><a href="/itemInfo?id=${saleItem.id}""><img src= ${saleItem.imageSource} height = "50" width = "50"></td>
       <td>${saleItem.name }</td>
       <td>${saleItem.pricePerUnit }</td>
       <td>${saleItem.srp }</td>

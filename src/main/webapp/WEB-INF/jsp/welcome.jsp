@@ -83,7 +83,7 @@
 			
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-43">
-						<h1>Welcome to ${company.name}'s online ordering system</h1>
+					<!--  	<h1>Welcome to ${company.name}'s online ordering system</h1> -->
 					</span>
 				
 				</form>

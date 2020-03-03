@@ -75,6 +75,10 @@ body{
     color: white;
 }
 
+.tutorialMessage{
+	font-size: 23px;
+}
+
 
 .searchBarList a{
 	

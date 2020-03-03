@@ -78,8 +78,8 @@
 		</form>
 		
 		<br>
-		<br>
-		<br>		
+		
+				
 			
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-43">

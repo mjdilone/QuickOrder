@@ -6,14 +6,19 @@ package com.ds.quickOrder.dao;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ds.quickOrder.Constants;
+import com.ds.quickOrder.controller.CartController;
 import com.ds.quickOrder.model.Account;
 import com.ds.quickOrder.model.AccountRowMapper;
 import com.ds.quickOrder.model.CartItem;
@@ -22,7 +27,8 @@ import com.ds.quickOrder.model.CartItemRowMapper;
 @Transactional
 @Repository
 public class CheckoutDaoImpl implements CheckoutDao{
-	
+	private static Logger log = LoggerFactory.getLogger(CartController.class);
+
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
@@ -75,54 +81,44 @@ public class CheckoutDaoImpl implements CheckoutDao{
 		return name;
 	}
 
-//	@Override
-//	public List<CartItem> retrieveCart(int userId) {
-//		String query = "select * from cart_items where customer_id = " + userId;
-//		List<CartItem> cart = jdbcTemplate.query(query, new CartItemRowMapper());
-//		
-//		for(CartItem i: cart) {
-//			i.setImageSource(saleItemDao.findSaleItemByName(i.getName()).getImageSource());
-//		}
-//		return cart;
-//	}
-
-//	@Override
-//	public List<CartItem> retrieveGuestCart(int userId) {
-//		String query = "select * from guest_cart_items where customer_id = " + userId;
-//		//System.out.println("the query in retreiveCart: " + query);
-//		List<CartItem> cart = jdbcTemplate.query(query, new CartItemRowMapper());
-//		
-//		for(CartItem i: cart) {
-//			i.setImageSource(saleItemDao.findSaleItemByName(i.getName()).getImageSource());
-//		}
-//		return cart;
-//	}
-
 	@Override
 	public Boolean isGuest(int userid) {
 		String query = "select * from customer_accounts where id = '" + userid + "'";
 		RowMapper<Account> rowMapper = new AccountRowMapper();
 		Account account = new Account();
-		account = jdbcTemplate.queryForObject(query, rowMapper);
+	
+		try {
+			account = jdbcTemplate.queryForObject(query, rowMapper);
+		} catch (EmptyResultDataAccessException emptyResultError) {
+			return true;
+		}
 		
 		if (account != null) {
 			return false;
 		}else {
 			return true;
 		}
-		
-		
 	}
 
+	@Override
 	public void checkout(int id) {
-		String queryToCopyCartToPastOrders = "insert into past_order_items  select * from cart_items where customer_id = " + id; 
-		String queryToDeleteCart = "delete  from cart_items where customer_id = " + id ;
 		
-		jdbcTemplate.execute(queryToCopyCartToPastOrders);
-		jdbcTemplate.execute(queryToDeleteCart);
-		
-		
-		
+		if(isGuest(id)) {
+			log.info("********* Guest Checkout being called");
+			String queryToCopyCartToPastOrders = "insert into past_order_items  select * from cart_items where customer_id = " + id; 
+			String queryToDeleteCart = "delete  from guest_cart_items where customer_id = " + id ;
+			
+			jdbcTemplate.execute(queryToCopyCartToPastOrders);
+			jdbcTemplate.execute(queryToDeleteCart);
+		}else {
+			log.info("********* User Checkout being called");
+			String queryToCopyCartToPastOrders = "insert into past_order_items  select * from cart_items where customer_id = " + id; 
+			String queryToDeleteCart = "delete  from cart_items where customer_id = " + id ;
+			
+			jdbcTemplate.execute(queryToCopyCartToPastOrders);
+			jdbcTemplate.execute(queryToDeleteCart);
+		}
+
 	}
 	
 	

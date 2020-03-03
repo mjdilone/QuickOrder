@@ -1,6 +1,7 @@
 package com.ds.quickOrder.controller;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -38,9 +39,10 @@ public class LoginController {
 	@CookieValue(value = "password",defaultValue = "emptyCookiePassword") String cookiePassword,
 	@CookieValue(value = "userId",defaultValue = "emptyCookieUserId") String cookieUserId,
 	@CookieValue(value = "cartCountCookie",defaultValue = "emptyCookieCartCount") String cartCountCookieString,
-	HttpServletResponse response) 
+	@CookieValue(value = "cookieHashUserId",defaultValue = "emptyCookieHashUserId") String cookieGuestUserId,
+	HttpServletResponse response,
+	HttpServletRequest request) 
 	{
-		
 		try {
 			helper.prepModel(model, cartCountCookieString, cookieUsername, cookieUserId);
 		} catch (Exception e) {
@@ -56,7 +58,8 @@ public class LoginController {
 	public ModelAndView loginAuth(
 	@RequestParam String username,
 	@RequestParam String password, 
-	HttpServletResponse response
+	HttpServletResponse response,
+	HttpServletRequest request
 	){
 		
 		if(username.isEmpty() || password.isEmpty()) {
@@ -73,6 +76,7 @@ public class LoginController {
 			Integer userId = loginService.retrieveAccountUserId(username);
 
 			if(loginService.authenticateCredentials(username,password)) {
+				log.info("Logging in");
 				try {
 					Cookie cookieUsername = new Cookie("username",username);
 					Cookie cookiePassword = new Cookie("password",password);

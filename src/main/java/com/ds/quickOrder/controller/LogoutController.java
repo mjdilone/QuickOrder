@@ -37,10 +37,12 @@ public class LogoutController {
 			cartCountCookieString = "";
 			
 			Cookie[] cookies = request.getCookies();
-			if(cookies!=null)
-			for (int i = 0; i < cookies.length; i++) {
-			 cookies[i].setMaxAge(0);
+			if(cookies!=null) {
+				for (int i = 0; i < cookies.length; i++) {
+					 cookies[i].setMaxAge(0);
+					}
 			}
+			
 			
 			Cookie cookieUsernameEmpty = new Cookie("username","");
 			Cookie cookiePasswordEmpty = new Cookie("password","");
@@ -52,11 +54,11 @@ public class LogoutController {
 			response.addCookie(cookieUserIdEmpty);
 			response.addCookie(cookieCartCountEmpty);
 			
-			log.info("Values after logout ********");
-			log.info(cartCountCookieString);
-			log.info(cookieUsername);
-			log.info(cookieUserId);
-			log.info("********");
+			log.info("Values after logout /*");
+			log.info("Cart Count : " + cartCountCookieString);
+			log.info("Cookie username: " + cookieUsername);
+			log.info("Cookie User Id " + cookieUserId);
+			log.info("*/");
 			//helper.prepModel(model, cartCountCookieString, cookieUsername, cookieUserId);
 			model.addObject("username", "Guest");
 			model.setViewName("login");

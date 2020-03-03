@@ -80,7 +80,8 @@
    </tbody>
   </table>
  	<form action="/list"><input type ="submit" value ="Keep Shopping"></form>
- 	<form action="/checkout"><input type = "hidden" name = "id" value =${id }><input type ="submit" value ="Checkout"></form>
+ 	<form action="/checkout"><input type = "hidden" name = "id" value =${id }><input type ="submit" value ="Checkout"></form> 
+ 	
  	
  </div>
 

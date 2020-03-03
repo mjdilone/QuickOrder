@@ -79,6 +79,11 @@ body{
 	font-size: 23px;
 }
 
+.goodbyeMessage {
+	font-size:38px;
+	text-shadow: black;
+}
+
 
 .searchBarList a{
 	

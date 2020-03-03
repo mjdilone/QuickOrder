@@ -10,13 +10,17 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ds.quickOrder.controller.CartController;
 import com.ds.quickOrder.dao.CheckoutDaoImpl;
 
 @Service
 public class CheckoutServiceImpl implements CheckoutService {
+	private static Logger log = LoggerFactory.getLogger(CartController.class);
 
 	@Autowired
 	CheckoutDaoImpl checkoutDao;
@@ -77,6 +81,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 	}
 
 	public void checkout(int id) {
+		log.info("Method Entry " + new Object(){}.getClass().getEnclosingMethod().getName());
 		
 		try {
 			checkoutDao.checkout(id);

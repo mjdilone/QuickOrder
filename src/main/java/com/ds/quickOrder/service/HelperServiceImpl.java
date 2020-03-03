@@ -22,6 +22,7 @@ public class HelperServiceImpl implements HelperService{
 		if(!cartCountCookieString.equalsIgnoreCase("emptyCookieCartCount")) {
 			
 			log.info("Method Entry " + new Object(){}.getClass().getEnclosingMethod().getName());
+			log.info("Model Prep:User");
 			log.info("CookieUserId: " + cookieUserId);
 			
 			int cartCount = (cartService.retrieveCart(Integer.parseInt(cookieUserId))).size();
@@ -30,10 +31,14 @@ public class HelperServiceImpl implements HelperService{
 			model.addObject("username",cookieUsername);
 			model.addObject("id",cookieUserId);
 		}else {
+			log.info("Method Entry " + new Object(){}.getClass().getEnclosingMethod().getName());
+			log.info("Model Prep:Guest");
+			
 			int cartCount = (cartService.retrieveGuestCart(Integer.parseInt(cookieUserId))).size();
 
 			model.addObject("username","Guest");
 			model.addObject("cartCount",cartCount);
+			model.addObject("id",cookieUserId);
 			
 			
 		}

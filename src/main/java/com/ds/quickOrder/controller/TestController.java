@@ -43,20 +43,4 @@ public class TestController {
 			}
 			return model;
 		}
-		
-		
-//		@RequestMapping(value = {"/"},method=RequestMethod.GET)
-//		public ModelAndView testingEmptyPage() {
-//			try {
-//				String message = "this message is being sent from within the test method";
-//				
-//				log.info("Finding user: -> {}",repo.findById(1000));
-//				
-//				model.addObject("messageToPass", message);
-//				model.setViewName("test");
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			return model;
-//		}
 }

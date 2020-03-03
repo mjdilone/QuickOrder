@@ -34,6 +34,15 @@ public class CartDaoImpl implements CartDao{
 		
 		jdbcTemplate.execute(query);
 	}
+	
+	@Override
+	public void addToGuestCart(int itemId, int userId, int quantity) {
+		SaleItemRowMapper mapper = new SaleItemRowMapper();
+		SaleItem itemToAdd = jdbcTemplate.queryForObject(("select * from sale_item where id =  " + itemId), mapper);
+		String query = "insert into guest_cart_items values (" +  userId + " , " +  "NOW()"  + "," +  "'" + itemToAdd.getName() + "'" + "," + quantity + ")";
+		
+		jdbcTemplate.execute(query);
+	}
 
 	@Override
 	public List<CartItem> retrieveCart(int userId) {
@@ -59,14 +68,7 @@ public class CartDaoImpl implements CartDao{
 	}
 	
 
-@Override
-	public void addToGuestCart(int itemId, int userId, int quantity) {
-		SaleItemRowMapper mapper = new SaleItemRowMapper();
-		SaleItem itemToAdd = jdbcTemplate.queryForObject(("select * from sale_item where id =  " + itemId), mapper);
-		String query = "insert into guest_cart_items values (" +  userId + " , " +  "NOW()"  + "," +  "'" + itemToAdd.getName() + "'" + "," + quantity + ")";
-		
-		jdbcTemplate.execute(query);
-	}
+
 
 	@Override
 	public void setImageSources(List<CartItem> cart) {

@@ -41,13 +41,14 @@ public class CartController {
 			@RequestParam int quantity,
 			@CookieValue(value = "userId",defaultValue = "emptyCookieUserId") String cookieUserId,
 			@CookieValue(value = "cookieHashUserId",defaultValue = "emptyCookieHashUserId") String cookieGuestUserId,
+			@CookieValue(value = "username",defaultValue = "emptyCookieUsername") String cookieUsername,
 			HttpServletResponse response) {
 		
-		log.info(this.getClass().getName(),"methodName");
+		log.info("Method Entry " + new Object(){}.getClass().getEnclosingMethod().getName());
 		
 		//needs to pass the id of the item that's been clicked on and the id of the current user
 		Integer userId = null;
-		log.info("User id from cookies is : " + cookieUserId);
+		log.info("User id from cookies is: " + cookieUserId);
 		
 		if(cookieUserId.equals("emptyCookieUserId")  ){
 			try {
@@ -69,8 +70,14 @@ public class CartController {
 			}
 		}
 		
-		log.info("cookie for guest is " + cookieGuestUserId);
-		if(!cookieGuestUserId.equals("emptyCookieHashUserId")) {
+		//problem code
+		System.out.println("Printing user ids /*");
+		log.info("User Id: " + cookieUserId);
+		log.info("Guest Id: " + cookieGuestUserId);
+		System.out.println("*/");
+		
+		if((!cookieGuestUserId.equals("emptyCookieHashUserId")) & (cookieUsername.equals("emptyCookieUsername")) ) {
+			log.info("cookie for guest is " + cookieGuestUserId);
 			try {
 				log.info("calling the guest cart");
 				userId = Integer.valueOf(cookieGuestUserId);
@@ -80,7 +87,7 @@ public class CartController {
 			}
 		}else {
 			try {
-				log.info("Calling the cart");
+				log.info("Calling the user cart");
 				userId = Integer.valueOf(cookieUserId);
 				cartService.addToCart(id,userId,quantity);
 			} catch (NumberFormatException e) {

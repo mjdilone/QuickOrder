@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ds.quickOrder.model.Account;
 import com.ds.quickOrder.model.PastOrderItem;
+import com.ds.quickOrder.model.User;
 import com.ds.quickOrder.service.AccountServiceImpl;
 import com.ds.quickOrder.service.HelperServiceImpl;
 
@@ -78,4 +79,45 @@ public class AccountController {
 		}
 		return model;
 	}
+	
+	@RequestMapping(value = {"/signUp"},method=RequestMethod.GET)
+	public ModelAndView signUp(HttpServletResponse response, HttpServletResponse request) 
+	{
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		model.setViewName("signUpForm");
+		return model;
+	}
+	
+	@RequestMapping(value = {"/signUpNewUser"},method=RequestMethod.POST)
+	public ModelAndView signUpNewUser(HttpServletResponse response, HttpServletResponse request,
+		@RequestParam String fname,
+		@RequestParam String lname,
+		@RequestParam String uname,
+		@RequestParam String password,
+		@RequestParam String email) 
+	{
+		try {
+			System.out.println("fname that's been passed in the sign up form: " + fname);
+			System.out.println("lname that's been passed in the sign up form: " + lname);
+			System.out.println("uname that's been passed in the sign up form: " + uname);
+			System.out.println("password that's been passed in the sign up form: " + password);
+			System.out.println("email that's been passed in the sign up form: " + email);
+
+			User userToAdd = new User(fname,lname,email,password,uname);
+			
+			accountService.signUpNewUser(userToAdd);
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		model.setViewName("signUpForm");
+		return model;
+	}
+	
+	
 }

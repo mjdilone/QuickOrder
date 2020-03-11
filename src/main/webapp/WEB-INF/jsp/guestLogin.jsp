@@ -61,6 +61,12 @@
  			<input type = "submit" value = "Click here to login">
  		</form>
  	</div>
+ 	
+ 	<div class = "">
+		<form action = "signUp">
+			<input type = "submit" value = "Sign up">
+		</form> 	
+ 	</div>
 
 </div>
 </body>

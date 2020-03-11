@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ds.quickOrder.dao.AccountDaoImpl;
 import com.ds.quickOrder.model.Account;
 import com.ds.quickOrder.model.PastOrderItem;
+import com.ds.quickOrder.model.User;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -53,5 +54,10 @@ public class AccountServiceImpl implements AccountService {
 			e.printStackTrace();
 		}
 		return pastOrders;
+	}
+
+	@Override
+	public void signUpNewUser(User user) {
+		accountDao.addNewUser(user);
 	}
 }

@@ -28,6 +28,18 @@ body{
     padding-bottom:4%;
     text-align:center;
     color: cyan; 
+    text-indent: 5%;
+}
+
+.signUpForm td{
+	width:100px;
+}
+
+.signUpForm input[type = "submit"]{
+	 	border: none;
+		background-color: #3293cd; 
+  		color: white;
+  		cursor: pointer;
 }
 
 .itemInfo{
@@ -103,12 +115,18 @@ body{
 
 
 input{
-	
 	-webkit-border-radius: 50px;
 	-moz-border-radius: 50px;
 	border-radius: 50px;
 	text-align: center;
+	width: 100%;
+	clear:both;
 }
+
+input[type = number]{
+	width:100%;
+}
+
 
 
 .row{

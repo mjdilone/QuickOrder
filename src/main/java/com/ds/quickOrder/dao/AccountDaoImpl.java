@@ -12,6 +12,8 @@ import com.ds.quickOrder.model.Account;
 import com.ds.quickOrder.model.AccountRowMapper;
 import com.ds.quickOrder.model.PastOrderItem;
 import com.ds.quickOrder.model.PastOrderItemRowMapper;
+import com.ds.quickOrder.model.User;
+import com.ds.quickOrder.model.UserRowMapper;
 
 @Repository
 public class AccountDaoImpl implements AccountDao{
@@ -21,6 +23,7 @@ public class AccountDaoImpl implements AccountDao{
 	
 	AccountRowMapper accountRowMapper = new AccountRowMapper();
 	PastOrderItemRowMapper pastOrderItemMapper = new PastOrderItemRowMapper();
+	UserRowMapper UserRowMapper = new UserRowMapper();
 	
 	//no defense against an empty account, in other words a guest
 	@Override
@@ -74,6 +77,23 @@ public class AccountDaoImpl implements AccountDao{
 			}
 		}
 		return newCart;
+	}
+
+	//insert into users values (1000,"Michael","Dilone","naira@naira.com","dilonePassword","mikeUser");
+
+	@Override
+	public void addNewUser(User user) {
+		String query = "insert into users values " + "(" + "null," + "'" + user.getFname() + "'" + "," + "'" + user.getLname() + "'" + "," + "'" + user.getEmail() + "'" + "," + "'" + user.getPassword() + "'" +
+				"," +"'" +  user.getUname()+ "'" + ")";
+		
+		System.out.println("**************************Query in addNewUser: " + query);
+		try {
+			jdbcTemplate.execute(query);
+		} catch (Exception e) {
+			System.out.println("somehting happened with the sql");
+			e.printStackTrace();
+		}
+		
 	}
 
 }

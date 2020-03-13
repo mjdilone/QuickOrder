@@ -28,7 +28,7 @@ public  class Constants {
 		return draft;
 }
 	public static final String companyName= "MC"; 
-	public static final String duplicateUserNameMessage = "Username already exits, please enter another username";
+	public static final String duplicateUserNameMessage = "Username is empty/already exists, please enter another username";
 
 	
 	public static final String QUERY_HEADER = "SQL QUERY: " ;

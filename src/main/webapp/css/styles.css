@@ -35,7 +35,7 @@ body{
 	width:100px;
 }
 
-.signUpForm input[type = "submit"]{
+input[type = "submit"]{
 	 	border: none;
 		background-color: #3293cd; 
   		color: white;
@@ -72,6 +72,7 @@ body{
 
 .loginForm {
 	color:cyan;
+	align-content: center;
 }
 
 .categoriesList {
@@ -119,8 +120,9 @@ input{
 	-moz-border-radius: 50px;
 	border-radius: 50px;
 	text-align: center;
-	width: 100%;
+	width: 20%;
 	clear:both;
+	
 }
 
 input[type = number]{

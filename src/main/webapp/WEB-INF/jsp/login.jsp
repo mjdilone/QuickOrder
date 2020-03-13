@@ -8,6 +8,8 @@
 <meta charset="ISO-8859-1">
 <title>Login</title>
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/main.css">
+
 <link href="../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
  <script src="../webjars/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
  <script src="../webjars/jquery/3.0.0/js/jquery.min.js" ></script>
@@ -31,10 +33,7 @@
 				<button class = "button" >Logout</button>
 			</form>
 		</div>
-		
-		<script type="text/javascript">
-		var user = "<?php echo $username?>"; 
-		</script>
+	
 			
 		<div class ="button">
 			<form action = "retrieveCart">
@@ -73,7 +72,6 @@
 		<input type="submit" value = "Login">
 	</form>
 </div>
-
 
 </div>
 </body>

@@ -17,39 +17,7 @@
 
  <div class="container">
  
- <%-- 	<div class = "navBar">
- 	Welcome,  ${username}
- 	<br>
- 		<div class = "button">
-			<form action="login">
-				<button class = "button">Login</button>
-			</form>
-		</div>
-			
-		<div class ="button">
-			<form action="logout">
-				<button class = "button" >Logout</button>
-			</form>
-		</div>
-		
-		<script type="text/javascript">
-		var user = "<?php echo $username?>"; 
-		</script>
-			
-		<div class ="button">
-			<form action = "retrieveCart">
-				<button class = "button">Cart(${cartCount})</button>
-			</form>
-		</div>
-		
-		<div class ="button">
-			<form action = "accountDetails"  >
-			<input type='hidden' name='username' value='${username}'/> 
-				<button class = "button">Account</button>
-			</form>
-		</div>	
-		
-		</div> --%>
+ 
 		
 	<div class = "errorMessage">
 		<p>
@@ -61,6 +29,8 @@
  			<input type = "submit" value = "Click here to login">
  		</form>
  	</div>
+ 	
+ 	<br>
  	
  	<div class = "">
 		<form action = "signUp">

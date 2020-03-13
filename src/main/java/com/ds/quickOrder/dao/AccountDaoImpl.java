@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +20,8 @@ import com.ds.quickOrder.model.UserRowMapper;
 
 @Repository
 public class AccountDaoImpl implements AccountDao{
-
+	
+	private static Logger log = LoggerFactory.getLogger(AccountDaoImpl.class);
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
@@ -28,7 +32,7 @@ public class AccountDaoImpl implements AccountDao{
 	//no defense against an empty account, in other words a guest
 	@Override
 	public Account retrieveAccount(String username) {
-		System.out.println("Username: " + username);
+		log.info("Username: " + username);
 		if(username.isEmpty() || username.equalsIgnoreCase("guest")) {
 			return new Account();
 		}else {
@@ -86,14 +90,40 @@ public class AccountDaoImpl implements AccountDao{
 		String query = "insert into users values " + "(" + "null," + "'" + user.getFname() + "'" + "," + "'" + user.getLname() + "'" + "," + "'" + user.getEmail() + "'" + "," + "'" + user.getPassword() + "'" +
 				"," +"'" +  user.getUname()+ "'" + ")";
 		
-		System.out.println("**************************Query in addNewUser: " + query);
+		log.info("Query in addNewUser: " + query);
 		try {
 			jdbcTemplate.execute(query);
 		} catch (Exception e) {
-			System.out.println("somehting happened with the sql");
+			log.info("somehting happened with the sql");
 			e.printStackTrace();
 		}
 		
 	}
 
+
+
+	
+	@Override
+	public Boolean addNewAccount(Account account) {
+		String query = "insert into customer_accounts values " + 
+				"(" + "null," + "'" + 
+				account.getFname() + "'" + "," + "'" + 
+				account.getLname() + "'" + "," + "'" + 
+				account.getEmail() + "'" + "," + "'" + 
+				account.getAccount_name() + "'" +"," +"'" +  
+				account.getPassword()+ "'" + ")";
+		
+		log.info("Query in addNewAccount: " + query);
+		
+		try {
+			jdbcTemplate.execute(query);
+			return true;
+		} catch (DuplicateKeyException e) {
+			log.info("an account with that username already exists");
+			e.printStackTrace();
+			return false;
+		}catch(Exception e) {
+			return false;
+		}
+	}
 }

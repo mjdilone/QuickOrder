@@ -12,4 +12,5 @@ public interface AccountDao {
 	public List<PastOrderItem> retrievePastOrders(int userId);
 	public List<PastOrderItem> aggregatePastOrderItems(List<PastOrderItem> cart);
 	public void addNewUser(User user);
+	public Boolean addNewAccount(Account account);
 }

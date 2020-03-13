@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ds.quickOrder.Constants;
 import com.ds.quickOrder.model.Account;
 import com.ds.quickOrder.model.PastOrderItem;
 import com.ds.quickOrder.model.User;
@@ -101,19 +102,26 @@ public class AccountController {
 		@RequestParam String email) 
 	{
 		try {
-			System.out.println("fname that's been passed in the sign up form: " + fname);
-			System.out.println("lname that's been passed in the sign up form: " + lname);
-			System.out.println("uname that's been passed in the sign up form: " + uname);
-			System.out.println("password that's been passed in the sign up form: " + password);
-			System.out.println("email that's been passed in the sign up form: " + email);
+			log.info("fname that's been passed in the sign up form: " + fname);
+			log.info("lname that's been passed in the sign up form: " + lname);
+			log.info("uname that's been passed in the sign up form: " + uname);
+			log.info("password that's been passed in the sign up form: " + password);
+			log.info("email that's been passed in the sign up form: " + email);
 
+			//add it to a user database regardless, this keeps track of who is using the site
 			User userToAdd = new User(fname,lname,email,password,uname);
-			
 			accountService.signUpNewUser(userToAdd);
 			
-			
+			//requires input validation
+			Account account = new Account(fname,lname,email,uname,password);
+			if(!accountService.signUpNewAccount(account)) {
+				String duplicateUsernameMessage = Constants.duplicateUserNameMessage;
+				model.addObject("duplicateUsernameMessage",duplicateUsernameMessage);
+				model.setViewName("signUpForm");
+				return model;
+			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			log.info("Crash: signUp");
 		}
 		model.setViewName("signUpForm");
 		return model;

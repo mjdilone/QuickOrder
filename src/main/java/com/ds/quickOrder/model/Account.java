@@ -27,6 +27,15 @@ public class Account {
 		this.password = password;
 	}
 	
+	public Account( String fname, String lname, String email, String account_name, String password) {
+		super();
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+		this.account_name = account_name;
+		this.password = password;
+	}
+	
 	public int getId() {
 		return id;
 	}

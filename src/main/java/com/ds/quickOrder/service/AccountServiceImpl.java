@@ -60,4 +60,16 @@ public class AccountServiceImpl implements AccountService {
 	public void signUpNewUser(User user) {
 		accountDao.addNewUser(user);
 	}
+
+	@Override
+	public Boolean signUpNewAccount(Account account) {
+		
+		if(accountDao.addNewAccount(account)) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
 }

@@ -10,6 +10,7 @@ import com.ds.quickOrder.service.CartServiceImpl;
 @Configuration
 public  class Constants {
 	
+
 	@Autowired
 	CartServiceImpl cartService;
 	
@@ -27,6 +28,8 @@ public  class Constants {
 		return draft;
 }
 	public static final String companyName= "MC"; 
+	public static final String duplicateUserNameMessage = "Username already exits, please enter another username";
+
 	
 	public static final String QUERY_HEADER = "SQL QUERY: " ;
 	public static final int QUERY_SEARCH_LIMIT = 10;

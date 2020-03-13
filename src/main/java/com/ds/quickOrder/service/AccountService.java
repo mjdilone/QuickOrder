@@ -11,5 +11,7 @@ public interface AccountService {
 	public List<PastOrderItem> retrievePastOrders(String username);
 	public List<PastOrderItem> retrievePastOrders(int userId);
 	public void signUpNewUser(User user);
+	public Boolean signUpNewAccount(Account account);
+	
 	
 }

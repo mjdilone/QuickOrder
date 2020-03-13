@@ -14,7 +14,7 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Override
 	public Boolean authenticateCredentials(String username,String password) {
-		Boolean flag = false;
+		Boolean isInDB = false;
 		
 		try {
 			Account accountToVerify = loginDao.retrieveAccount(username);
@@ -22,15 +22,15 @@ public class LoginServiceImpl implements LoginService {
 			System.out.println("the account name and password from the DB are: " + accountToVerify.getAccount_name() + " " );
 			
 			if(accountToVerify.getAccount_name().toString().equals(username.trim()) && accountToVerify.getPassword().toString().equals(password)) {
-				flag = true;
+				isInDB = true;
 			}
 			else {
-				flag = false;
+				isInDB = false;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return flag;
+		return isInDB;
 	}
 
 	@Override

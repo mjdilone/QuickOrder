@@ -47,7 +47,9 @@
 						</div>
 		</form>
 	</div>
+	${duplicateUsernameMessage}
 </div>
+
 
 
 </body>

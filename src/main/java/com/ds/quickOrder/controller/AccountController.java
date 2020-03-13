@@ -123,7 +123,8 @@ public class AccountController {
 		} catch (Exception e) {
 			log.info("Crash: signUp");
 		}
-		model.setViewName("signUpForm");
+		model = new ModelAndView();
+		model.setViewName("login");
 		return model;
 	}
 	

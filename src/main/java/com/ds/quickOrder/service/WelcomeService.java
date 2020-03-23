@@ -11,5 +11,6 @@ public interface WelcomeService {
 	public List<Category> getAllCategories();
 	public Category retrieveCategory(String category);
 	public List<SaleItem> searchSaleItemByCategory(Category category);
+	public void saveVisitorAdress(String address);
 	
 }

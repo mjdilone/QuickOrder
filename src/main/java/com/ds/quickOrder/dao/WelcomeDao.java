@@ -9,5 +9,6 @@ public interface WelcomeDao {
 	public Company retrieveCompany();
 	public List<Category> getAllCategories();
 	public Category retrieveCategory(String name);
+	public void saveVisitorAddress(String address);
 	
 }

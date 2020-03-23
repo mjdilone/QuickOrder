@@ -2,6 +2,8 @@ package com.ds.quickOrder.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import com.ds.quickOrder.model.SaleItem;
 @Service
 public class WelcomeServiceImpl implements WelcomeService {
 
+	private static Logger log = LoggerFactory.getLogger(WelcomeServiceImpl.class);
 	@Autowired
 	WelcomeDaoImpl welcomeDao;
 	
@@ -68,6 +71,16 @@ public class WelcomeServiceImpl implements WelcomeService {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public void saveVisitorAdress(String address) {
+		try {
+			welcomeDao.saveVisitorAddress(address);
+		} catch (Exception e) {
+			log.info("vistor tracking has failed");
+		}
+		
 	}
 
 }

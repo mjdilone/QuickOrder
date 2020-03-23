@@ -57,7 +57,10 @@ public class WelcomeController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			log.info("Visitor: " + request.getRemoteAddr());
+			String address = request.getRemoteAddr();
+			if(!address.equals("'0:0:0:0:0:0:0:1'")  ) {
+				welcomeService.saveVisitorAdress(request.getRemoteAddr());
+			}
 			return model;
 		}
 		

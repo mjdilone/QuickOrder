@@ -29,6 +29,7 @@ body{
     text-align:center;
     color: cyan; 
     text-indent: 5%;
+    align-content: center;
 }
 
 .signUpForm td{
@@ -73,6 +74,7 @@ input[type = "submit"]{
 .loginForm {
 	color:cyan;
 	align-content: center;
+	
 }
 
 .categoriesList {
@@ -127,6 +129,13 @@ input{
 
 input[type = number]{
 	width:100%;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	text-align: center;
+	width: 20%;
+	clear:both;
+	
 }
 
 

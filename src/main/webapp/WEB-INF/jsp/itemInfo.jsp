@@ -75,7 +75,8 @@
       ${saleItem.itemDescription}
       <br>
       <br>
-      Amount: <input type = "number" name = "quantity" value ="quantity">
+      Amount: <br> 
+      <input type = "number" name = "quantity" value ="quantity">
       <br>
       <br>
       <input type="submit" value = "Add to Cart">

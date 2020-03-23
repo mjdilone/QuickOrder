@@ -57,10 +57,11 @@
 			Search: <input type = "text" name="name">
 		</form>
 
-	<h1 class ="large">Welcome!</h1>
+<!-- 	<h1 class ="large">Welcome!</h1> -->
 
 	<div class = "loginForm">
 	<form action="/login" method = "post">
+	<br>
 		User Name :
 		<br> 
 		<input type ="text"  name = "username">

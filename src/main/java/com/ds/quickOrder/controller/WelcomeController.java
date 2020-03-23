@@ -2,6 +2,7 @@ package com.ds.quickOrder.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -35,7 +36,8 @@ public class WelcomeController {
 		
 	@RequestMapping(value = {"/","welcome"},method=RequestMethod.GET)
 	public ModelAndView welcome(
-	HttpServletResponse respone,
+	HttpServletRequest request,
+	HttpServletResponse response,
 	@CookieValue(value = "username",defaultValue = "emptyCookieUsername") String cookieUsername
 ) {
 		try {
@@ -55,6 +57,7 @@ public class WelcomeController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			log.info("Visitor: " + request.getRemoteAddr());
 			return model;
 		}
 		

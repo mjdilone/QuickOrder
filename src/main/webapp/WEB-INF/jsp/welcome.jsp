@@ -83,8 +83,7 @@
 	
 	<div class = "tutorialMessage">
 	<p>
-		Start by choosing an item category, searching for a specific item in the searchbar above or click 
-		<a href="list">here</a> to browse all items.
+		Start by choosing an item category, searching for a specific item in the search bar above or click <a href="list">here</a> to browse all items.
 	</p>
 	</div>
 	

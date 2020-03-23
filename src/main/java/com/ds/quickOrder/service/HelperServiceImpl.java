@@ -34,7 +34,14 @@ public class HelperServiceImpl implements HelperService{
 			log.info("Method Entry " + new Object(){}.getClass().getEnclosingMethod().getName());
 			log.info("Model Prep:Guest");
 			
-			int cartCount = (cartService.retrieveGuestCart(Integer.parseInt(cookieUserId))).size();
+			int cartCount;
+			
+			try {
+				 cartCount = (cartService.retrieveGuestCart(Integer.parseInt(cookieUserId))).size();
+			} catch (NumberFormatException e) {
+				log.info("an empty guest cart was called, so the cart count has been manually set to 0");
+				 cartCount = 0;
+			}
 
 			model.addObject("username","Guest");
 			model.addObject("cartCount",cartCount);

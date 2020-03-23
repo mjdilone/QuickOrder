@@ -75,10 +75,16 @@ public class SaleItemController {
 	
 	
 	@RequestMapping(value = {"/itemInfo"},method=RequestMethod.GET)
-	public ModelAndView getItemInfo(@RequestParam int id) {
+	public ModelAndView getItemInfo(
+			@RequestParam int id,
+			@CookieValue(value = "username",defaultValue = "emptyCookieUsername") String cookieUsername,
+			@CookieValue(value = "userId",defaultValue = "emptyCookieUserId") String cookieUserId, 
+			@CookieValue(value = "cartCountCookie",defaultValue = "emptyCookieCartCount") String cartCountCookieString
+			) {
 		try {
 			SaleItem item = saleItemService.findSaleItemById(id); 
 			
+			helper.prepModel(model, cartCountCookieString, cookieUsername, cookieUserId);
 			model.addObject("saleItem",item);
 			model.setViewName("itemInfo");
 		} catch (Exception e) {

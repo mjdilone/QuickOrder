@@ -52,7 +52,13 @@ public class WelcomeDaoImpl implements WelcomeDao{
 
 	@Override
 	public void saveVisitorAddress(String address) {
-		String query = "insert into tracker " + "values (null," + "'" + address + "'" + ")";
+		//insert into tracker values (null,'test',now());
+		String query = "insert into tracker " + 
+				"values (null," + 
+				"'" + 
+				address + 
+				"',now()" + 
+		")";
 		System.out.println(query);
 		jdbcTemplate.execute(query);
 	}

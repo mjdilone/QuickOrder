@@ -58,7 +58,7 @@ public class WelcomeController {
 				e.printStackTrace();
 			}
 			String address = request.getRemoteAddr();
-			if(!address.equals("'0:0:0:0:0:0:0:1'")  ) {
+			if(!address.equals("0:0:0:0:0:0:0:1")) {
 				welcomeService.saveVisitorAdress(request.getRemoteAddr());
 			}
 			return model;

@@ -1,11 +1,7 @@
 package com.ds.quickOrder.model;
 
 public class CartItem {
-	@Override
-	public String toString() {
-		return "CartItem [name=" + name + ", quantity=" + quantity + ", customerId=" + customerId + ", imageSource="
-				+ imageSource + ", id=" + id + "]";
-	}
+
 	private String name;
 	private int quantity;
 	private long customerId;
@@ -47,4 +43,11 @@ public class CartItem {
 		this.quantity += quantity;
 	}
 
+	
+	@Override
+	public String toString() {
+		return "CartItem [name=" + name + ", quantity=" + quantity + ", customerId=" + customerId + ", imageSource="
+				+ imageSource + ", id=" + id + "]";
+	}
+	
 }

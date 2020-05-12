@@ -6,11 +6,9 @@ import javax.persistence.Table;
 
 import com.ds.quickOrder.Constants;
 
-
 @Entity
-//@NamedQuery(name="find_all_accounts",query = "select a from customer_accounts a")
 @Table(name = Constants.TABLE_NAME_CUSTOMER_ACCOUNTS)
-public class AccountEntity {
+public class AccountEntity extends Account{ //must extend the base class so changing the code to hibernate is much more painless
 	
 	@Id
 	private int id;
@@ -35,7 +33,16 @@ public class AccountEntity {
 		this.password = password;
 	}
 
-
+	public AccountEntity(Account account) {
+		super();
+		this.id = account.getId();
+		this.fname = account.getFname();
+		this.lname = account.getLname();
+		this.email = account.getEmail();
+		this.account_name = account.getAccount_name();
+		this.password = account.getPassword();
+		
+	}
 	public int getId() {
 		return id;
 	}
@@ -74,11 +81,9 @@ public class AccountEntity {
 		this.password = password;
 	}
 
-
 	@Override
 	public String toString() {
 		return "AccountEntity [id=" + id + ", fname=" + fname + ", lname=" + lname + ", email=" + email
 				+ ", account_name=" + account_name + ", password=" + password + "]";
 	}
-	
 }

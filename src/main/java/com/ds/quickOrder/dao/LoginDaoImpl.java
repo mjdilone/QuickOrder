@@ -17,15 +17,32 @@ public class LoginDaoImpl implements LoginDao {
 	
 	RowMapper<Account> rowMapper = new AccountRowMapper();
 	
+	@Autowired
+	AccountDao accountDao;
+	
+//	//JDBC
+//	@Override
+//	public Account retrieveAccount(String username) {
+//		String query = "select * from customer_accounts where account_name = '" + username + "'";
+//		System.out.println("query in account retrieval is " + query);
+//		
+//		Account account = new Account();
+//
+//		account = jdbcTemplate.queryForObject(query, rowMapper);
+//		
+//
+//		return account;
+//	}
+	
+	//Hibernate
 	@Override
 	public Account retrieveAccount(String username) {
-		String query = "select * from customer_accounts where account_name = '" + username + "'";
-		System.out.println("query in account retrieval is " + query);
 		
 		Account account = new Account();
+		
+		account = accountDao.retrieveAccount(username);
 
-		account = jdbcTemplate.queryForObject(query, rowMapper);
-
+		
 		return account;
 	}
 }

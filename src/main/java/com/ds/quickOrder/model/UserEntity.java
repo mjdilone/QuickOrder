@@ -1,18 +1,34 @@
 package com.ds.quickOrder.model;
 
-public class User {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.ds.quickOrder.Constants;
+
+@Entity
+@Table(name = Constants.TABLE_NAME_USERS)
+public class UserEntity extends User{
+
+	@Id
 	private int id;
+	@Column(name = "first_name")
 	private String fname;
+	@Column(name = "last_name")
 	private String lname;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "password")
 	private String password;
+	@Column(name = "username")
 	private String uname;
 	
-	public User() {
+	public UserEntity() {
 		
 	}
 	
-	public User(String fname, String lname, String email, String password, String uname) {
+	public UserEntity(String fname, String lname, String email, String password, String uname) {
 		super();
 		this.fname = fname;
 		this.lname = lname;
@@ -21,6 +37,18 @@ public class User {
 		this.uname = uname;
 	}
 
+	
+	public UserEntity(User user) {
+		super();
+		this.fname = user.getFname();
+		this.lname = user.getLname();
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.uname = user.getUname();
+	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "UserModel [id=" + id + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", password="
@@ -62,5 +90,4 @@ public class User {
 	public void setUname(String uname) {
 		this.uname = uname;
 	}
-	
 }

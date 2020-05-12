@@ -1,8 +1,18 @@
 package com.ds.quickOrder.model;
 
-public class Category {
-	
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.ds.quickOrder.Constants;
+
+@Entity
+@Table(name = Constants.TABLE_NAME_CATEGORIES)
+public class CategoryEntity extends Category{
+	@Id
 	private int id;
+	@Column(name = "name")
 	private String name;
 	
 	
@@ -15,14 +25,6 @@ public class Category {
 	public String getName() {
 		return name;
 	}
-	public Category() {
-		
-	}
-	public Category(int id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -31,5 +33,4 @@ public class Category {
 	public String toString() {
 		return "Category [id=" + id + ", name=" + name + "]";
 	}
-	
 }

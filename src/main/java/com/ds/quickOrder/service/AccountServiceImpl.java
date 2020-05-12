@@ -31,18 +31,18 @@ public class AccountServiceImpl implements AccountService {
 		return accountToRetrieve;
 	}
 
-	@Override
-	public List<PastOrderItem> retrievePastOrders(String username) {
-		List<PastOrderItem> pastOrders = null;
-		
-		try {
-			pastOrders = accountDao.retrievePastOrders(username);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return pastOrders;
-	}
+//	@Override
+//	public List<PastOrderItem> retrievePastOrders(String username) {
+//		List<PastOrderItem> pastOrders = null;
+//		
+//		try {
+//			pastOrders = accountDao.retrievePastOrders(username);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return pastOrders;
+//	}
 
 	@Override
 	public List<PastOrderItem> retrievePastOrders(int userId) {

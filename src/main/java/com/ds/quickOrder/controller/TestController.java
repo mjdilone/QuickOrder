@@ -34,7 +34,7 @@ public class TestController {
 			try {
 				String message = "this message is being sent from within the test method";
 				
-				log.info("Finding user: -> {}",repo.findById(1000));
+//				log.info("Finding user: -> {}",repo.findById(1000));
 				
 				model.addObject("messageToPass", message);
 				model.setViewName("test");

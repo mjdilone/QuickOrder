@@ -8,7 +8,7 @@ import com.ds.quickOrder.model.User;
 
 public interface AccountService {
 	public Account retrieveAccount(String username);
-	public List<PastOrderItem> retrievePastOrders(String username);
+//	public List<PastOrderItem> retrievePastOrders(String username);
 	public List<PastOrderItem> retrievePastOrders(int userId);
 	public void signUpNewUser(User user);
 	public Boolean signUpNewAccount(Account account);

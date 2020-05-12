@@ -23,6 +23,7 @@ import com.ds.quickOrder.model.Account;
 import com.ds.quickOrder.model.AccountRowMapper;
 import com.ds.quickOrder.model.CartItem;
 import com.ds.quickOrder.model.CartItemRowMapper;
+import com.ds.quickOrder.repo.AccountRepo;
 
 @Transactional
 @Repository
@@ -38,7 +39,8 @@ public class CheckoutDaoImpl implements CheckoutDao{
 	@Autowired
 	CartDao cartDao;
 	
-	
+	@Autowired
+	AccountDao accountDao;
 	
 	@Override
 	public String prepareCheckoutEmail(int id) {
@@ -46,11 +48,11 @@ public class CheckoutDaoImpl implements CheckoutDao{
 		
 		emailDraft.append(Constants.getEmailHeader(retrieveUserFNameAndLName(id), id));
 		System.out.println("Draft Before appending the cart items: " + emailDraft.toString());
-		List<CartItem> cart ;
+		List<CartItem> cart = null;
 		
 		if(isGuest(id)) {
 			 //cart = retrieveGuestCart(id);
-			 cart = cartDao.retrieveCart(id);
+			 cart = cartDao.retrieveGuestCart(id);
 		}else {
 			 //cart = retrieveCart(id);
 			cart = cartDao.retrieveCart(id);
@@ -67,60 +69,105 @@ public class CheckoutDaoImpl implements CheckoutDao{
 		return emailDraft.toString();
 	}
 
+	
+	//JDBC
+//	@Override
+//	public String retrieveUserFNameAndLName(int id) {
+//		String query = "select * from customer_accounts where id = '" + id + "'";
+//		
+//		System.out.println("query in User retrieval for checkout is " + query);
+//		
+//		RowMapper<Account> rowMapper = new AccountRowMapper();
+//		Account account = new Account();
+//		account = jdbcTemplate.queryForObject(query, rowMapper);
+//		
+//		
+//		
+//		
+//		String name = account.getFname() + " " +  account.getLname();
+//		return name;
+//	}
+	
+	//Hibernate
 	@Override
 	public String retrieveUserFNameAndLName(int id) {
-		String query = "select * from customer_accounts where id = '" + id + "'";
-		
-		System.out.println("query in User retrieval for checkout is " + query);
-		
-		RowMapper<Account> rowMapper = new AccountRowMapper();
 		Account account = new Account();
-		account = jdbcTemplate.queryForObject(query, rowMapper);
+		
+		try {
+			account = accountDao.retrieveAccount(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		String name = account.getFname() + " " +  account.getLname();
 		return name;
 	}
 
-	@Override
-	public Boolean isGuest(int userid) {
-		String query = "select * from customer_accounts where id = '" + userid + "'";
-		RowMapper<Account> rowMapper = new AccountRowMapper();
-		Account account = new Account();
+//	//JDBC
+//	@Override
+//	public Boolean isGuest(int userid) {
+//		String query = "select * from customer_accounts where id = '" + userid + "'";
+//		RowMapper<Account> rowMapper = new AccountRowMapper();
+//		Account account = new Account();
+//	
+//		try {
+//			account = jdbcTemplate.queryForObject(query, rowMapper);
+//		} catch (EmptyResultDataAccessException emptyResultError) {
+//			return true;
+//		}
+//		
+//		if (account != null) {
+//			return false;
+//		}else {
+//			return true;
+//		}
+//	}
 	
+	//Hibernate
+	@Override
+	public Boolean isGuest(int userId) {
+		Boolean isGuest = null;
 		try {
-			account = jdbcTemplate.queryForObject(query, rowMapper);
-		} catch (EmptyResultDataAccessException emptyResultError) {
-			return true;
+			isGuest = accountDao.isGuest(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
-		if (account != null) {
-			return false;
-		}else {
-			return true;
-		}
+		return isGuest;
 	}
 
+//	//JDBC
+//	@Override
+//	public void checkout(int id) {
+//		
+//		if(isGuest(id)) {
+//			log.info("********* Guest Checkout being called");
+//			String queryToCopyCartToPastOrders = "insert into past_order_items  select * from cart_items where customer_id = " + id; 
+//			String queryToDeleteCart = "delete  from guest_cart_items where customer_id = " + id ;
+//			
+//			jdbcTemplate.execute(queryToCopyCartToPastOrders);
+//			jdbcTemplate.execute(queryToDeleteCart);
+//		}else {
+//			log.info("********* User Checkout being called");
+//			String queryToCopyCartToPastOrders = "insert into past_order_items  select * from cart_items where customer_id = " + id; 
+//			String queryToDeleteCart = "delete  from cart_items where customer_id = " + id ;
+//			
+//			jdbcTemplate.execute(queryToCopyCartToPastOrders);
+//			jdbcTemplate.execute(queryToDeleteCart);
+//		}
+//
+//	}
+	
+	//Hibernate
+	//TODO implement the delete query into the repo
 	@Override
 	public void checkout(int id) {
-		
 		if(isGuest(id)) {
 			log.info("********* Guest Checkout being called");
-			String queryToCopyCartToPastOrders = "insert into past_order_items  select * from cart_items where customer_id = " + id; 
-			String queryToDeleteCart = "delete  from guest_cart_items where customer_id = " + id ;
-			
-			jdbcTemplate.execute(queryToCopyCartToPastOrders);
-			jdbcTemplate.execute(queryToDeleteCart);
+			cartDao.cartGuestCheckout(id);
 		}else {
 			log.info("********* User Checkout being called");
-			String queryToCopyCartToPastOrders = "insert into past_order_items  select * from cart_items where customer_id = " + id; 
-			String queryToDeleteCart = "delete  from cart_items where customer_id = " + id ;
-			
-			jdbcTemplate.execute(queryToCopyCartToPastOrders);
-			jdbcTemplate.execute(queryToDeleteCart);
+			cartDao.cartCheckout(id);
 		}
-
 	}
-	
-	
-
 }

@@ -10,5 +10,8 @@ public interface CartDao {
 	public void addToCart(int itemId,int userId,int quantity);
 	public void addToGuestCart(int itemId,int userId,int quantity);
 	public void setImageSources(List<CartItem> cart);
+	public void cartCheckout(int id);
+	public void cartGuestCheckout(int id);
 	public List<CartItem> aggregateCartItems(List<CartItem> cart);
+	
 }

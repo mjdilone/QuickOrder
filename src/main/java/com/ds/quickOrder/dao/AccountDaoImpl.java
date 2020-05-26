@@ -119,6 +119,7 @@ public class AccountDaoImpl implements AccountDao{
 		return result;
 	}
 	
+	//util
 	@Override
 	public List<PastOrderItem> aggregatePastOrderItems(List<PastOrderItem> cart) {
 		List<PastOrderItem> newCart =  new ArrayList<>();
@@ -213,6 +214,7 @@ public class AccountDaoImpl implements AccountDao{
 	}
 
 
+	//hibernate
 	@Override
 	public Account retrieveAccount(int id) {
 		Optional<AccountEntity> accountEntity = null;
@@ -222,7 +224,7 @@ public class AccountDaoImpl implements AccountDao{
 		return account;
 	}
 	
-	
+	//hibernate
 	public Boolean isGuest(int userId) {
 		Boolean isGuest = null;
 		
@@ -233,9 +235,6 @@ public class AccountDaoImpl implements AccountDao{
 			System.out.println("isGuest failed");
 			return false;
 		}
-		
-		
 		return isGuest;
 	}
-	
 }

@@ -27,6 +27,13 @@
 	<div class = "navBar">
  	Welcome,  ${username}
  	<br>
+ 	
+ 	<div class = "button">
+			<form action="welcome">
+				<button class = "button">Home</button>
+			</form>
+		</div>
+		
  		<div class = "button">
 			<form action="login">
 				<button class = "button">Login</button>

@@ -22,6 +22,7 @@ import com.ds.quickOrder.model.User;
 import com.ds.quickOrder.model.UserEntity;
 import com.ds.quickOrder.model.UserRowMapper;
 import com.ds.quickOrder.repo.AccountRepo;
+import com.ds.quickOrder.repo.SaleItemRepo;
 import com.ds.quickOrder.repo.UserRepo;
 
 @Repository
@@ -33,6 +34,9 @@ public class AccountDaoImpl implements AccountDao{
 	
 	@Autowired
 	AccountRepo repo;
+	
+	@Autowired
+	SaleItemRepo saleItemRepo;
 	
 	AccountRowMapper accountRowMapper = new AccountRowMapper();
 	PastOrderItemRowMapper pastOrderItemMapper = new PastOrderItemRowMapper();
@@ -236,5 +240,14 @@ public class AccountDaoImpl implements AccountDao{
 			return false;
 		}
 		return isGuest;
+	}
+
+
+	public void setPastOrdersImagePath(List<PastOrderItem> pastOrders) {
+		for(PastOrderItem item : pastOrders) {
+			String imagePath = saleItemRepo.findByName(item.getName()).getImageSource();
+			item.setImageSource(imagePath);
+		}
+		
 	}
 }

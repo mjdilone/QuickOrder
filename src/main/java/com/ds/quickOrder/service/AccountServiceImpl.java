@@ -71,5 +71,10 @@ public class AccountServiceImpl implements AccountService {
 		}
 		
 	}
+
+	public void setPastOrdersImagePath(List<PastOrderItem> pastOrders) {
+		accountDao.setPastOrdersImagePath(pastOrders);
+		
+	}
 	
 }

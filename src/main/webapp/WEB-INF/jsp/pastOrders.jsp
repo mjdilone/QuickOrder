@@ -21,6 +21,12 @@
 <div class = "navBar">
  	Welcome,  ${username}
  	<br>
+ 	 	<div class = "button">
+			<form action="welcome">
+				<button class = "button">Home</button>
+			</form>
+		</div>
+		
  		<div class = "button">
 			<form action="login">
 				<button class = "button">Login</button>
@@ -73,8 +79,10 @@
    <tbody>
     <c:forEach items="${pastOrders}" var="pastOrderItem" >
      <tr>
+     
       <td>${pastOrderItem.name }</td>
       <td>${pastOrderItem.quantity }</td>
+      <td><img src = ${pastOrderItem.imageSource}  height = "50" width = "50"></td>
      </tr>
     </c:forEach>
    </tbody>

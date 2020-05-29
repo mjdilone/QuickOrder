@@ -73,6 +73,11 @@ public class AccountController {
 		try {
 			List<PastOrderItem> pastOrders = accountService.retrievePastOrders(userId);
 			
+			//set image path to all items in the pastorders list by sending them to the dao
+			accountService.setPastOrdersImagePath(pastOrders);
+			for(PastOrderItem item : pastOrders) {
+				System.out.println(item.getImageSource());
+			}
 			model.addObject("pastOrders",pastOrders);
 			model.setViewName("pastOrders");
 		} catch (Exception e) {
